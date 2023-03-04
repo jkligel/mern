@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import Pokemon from './components/pokemon.jsx';
+import axios from 'axios';
 import './App.css'
 
 function App(){
@@ -11,17 +12,11 @@ function App(){
 
   useEffect( () => {
 
-    const fetchPokemon = async () => {
-      const data = await fetch(url);
-      const json = await data.json();
-
-      setCount(json.count);
-      setPokemon(json.results);
-
-    }
-
-    fetchPokemon()
-      .catch(console.error);
+    axios.get(url)
+      .then(response => {
+        setCount(response.data.count);
+        setPokemon(response.data.results);
+      })
 
   }, [] );
 
