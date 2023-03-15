@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 
 const PersonForm = (props) => {
+    const {people, setPeople} = props;
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
 
@@ -15,6 +16,8 @@ const PersonForm = (props) => {
             .then(res => {
                 console.log(res);
                 console.log(res.data);
+
+                setPeople([...people, res.data])
             })
             .catch(err => console.log(err));
     }
@@ -22,7 +25,7 @@ const PersonForm = (props) => {
     return (
         <form onSubmit={onSubmitHandler}>
             <p>
-                <label>First Name</label><br></br>
+                <label>First Name</label><br />
                 <input type={"text"} onChange={ (e) => setFirstName(e.target.value) }></input>
             </p>
             <p>
