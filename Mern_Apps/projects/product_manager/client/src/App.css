@@ -1,6 +1,8 @@
 .App {
   /* text-align: center; */
   margin-top: 5%;
+  display: flex;
+  justify-content: center;
 }
 
 .App-logo {
@@ -38,5 +40,14 @@
   }
 }
 
-form > div {
+.form-group {
+  background-color: lightgray;
+}
+
+.ProductList {
+  text-align: center;
+}
+
+.Detail {
+  text-align: center;
 }

@@ -1,10 +1,21 @@
 import './App.css';
-import ProductForm from './components/ProductForm';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Main from './views/Main';
+import Update from './components/Update';
+import Detail from './components/Detail'
 
 function App(){
   return (
     <div className="App">
-      <ProductForm></ProductForm>
+
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Main />} path="/home" default />
+          <Route element={<Detail />} path="/products/:id" />
+          <Route element={<Update />} path="/edit/:id"></Route>
+        </Routes>
+      </BrowserRouter>
+
     </div>
   )
 }

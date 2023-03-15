@@ -22,23 +22,23 @@ const ProductForm = (props) => {
     }
 
     return (
-        <div className='d-flex justify-content-center'>
+        <div>
             <form onSubmit={ onSubmitHandler }>
 
                 <h3 className='text-center mb-3'>Product Manager</h3>
 
-                <div className='form-group row bg-secondary mb-3 p-2'>
-                    <label className='text-white col'>Title</label>
+                <div className='form-group row mb-3 p-2'>
+                    <label className='col'>Title</label>
                     <input className="col-8" type="text" onChange={ e => setTitle(e.target.value)}/>
                 </div>
 
-                <div className='form-group mb-3 row bg-secondary mb-3 p-2'>
-                    <label className='text-white col'>Price</label>
+                <div className='form-group mb-3 row mb-3 p-2'>
+                    <label className='col'>Price</label>
                     <input className="col-8" type="text" onChange={ e => setPrice( e.target.value )}/>
                 </div>
 
-                <div className='form-group mb-3 row bg-secondary mb-3 p-2'>
-                    <label className='text-white col'>Description</label>
+                <div className='form-group mb-3 row mb-3 p-2'>
+                    <label className='col'>Description</label>
                     <input className="col-8" type="text" onChange={ e => setDescription(e.target.value)} />
                 </div>
 
