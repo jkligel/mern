@@ -1,20 +1,43 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import PersonForm from '../components/PersonForm';
-import PersonList from '../components/PersonList';
+import DisplayAll from '../components/DisplayAll';
 
 const Main = (props) => {
 
     const [people, setPeople] = useState([]);
 
-    const removeFromDom = personId => {
-        setPeople(people.filter(person => person._id != personId));
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/people')
+            .then(res => setPeople(res.data))
+            .catch(err => console.log(err));
+    }, []);
+
+    // const removeFromDom = personId => {
+    //     axios.delete('http://localhost:8000/api/people' + personId)
+    //         .then(res => {
+    //             console.log(res);
+    //             console.log(res.data);
+    //             setPeople(people.filter(person => person._id != personId));
+    //         })
+    //         .catch(err => console.log(err));
+    // }
+
+    const createPerson = (personParam) => {
+        axios.post('http://localhost:8000/api/people', personParam)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                setPeople([...people, res.data]);
+            })
+            .catch(err => console.log(err));
     }
 
     return (
         <div>
-            <PersonForm people={people} setPeople={setPeople} />
+            <PersonForm onSubmitProp={createPerson} initialFirstName="" initialLastName="" />
             <hr />
-            <PersonList people={people} setPeople={setPeople} removeFromDom={removeFromDom} />
+            <DisplayAll people={people} setPeople={setPeople} />
         </div>
     )
 
