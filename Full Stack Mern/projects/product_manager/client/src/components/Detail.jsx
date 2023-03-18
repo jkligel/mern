@@ -25,7 +25,7 @@ const Detail = (props) => {
             <div className='card-body'>
                 <p>Price: ${product.price}</p>
                 <p>Description: {product.description}</p>
-                <DeleteButton productId={product._id} successCallback={() => navigate('/home')}/>
+                <DeleteButton productId={product._id} successCallback={() => navigate('/')}/>
             </div>
 
         </div>
