@@ -17,16 +17,18 @@ const Form = (props) => {
     }
 
     return (
-        <div className='border border-dark p-4 text-start'>
+        <div className='border border-dark p-4 text-start mt-5'>
 
             <form onSubmit={joinServer}>
 
-                <h2>Create a username to join our server</h2>
+                <h2 className='text-center mb-4'>Get started right now!</h2>
+
+                <p>Create a username to join the chat server...</p>
                 
-                <div className='row input-group mb-3'>
-                    <label className=''>Username:</label>
+                <div className='row mb-3 form-group'>
+                    <label className='col-form-label col-sm-2 me-4'>Username:</label>
                     <input type='text' name="username" 
-                    className=''
+                    className='col-form-control col-sm-9'
                     value={username}
                     onChange={
                         e => {
@@ -36,7 +38,9 @@ const Form = (props) => {
                     />
                 </div>
 
-                <button className='shadow btn btn-outline-dark'>Join</button>
+                <div className='text-end'>
+                    <button className='shadow btn btn-success mb-3'>Join</button>
+                </div>
 
             </form>
 

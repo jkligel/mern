@@ -25,14 +25,17 @@ const io = socket(server, {
 });
 
 // Array for storing joined users
-let users = []
+let users = [];
+// Array for storing messages
+let messages = [];
 
 // Built-in event. Activates when a user connects
 io.on('connection', socket => {
     console.log('socket id: ' + socket.id);
-
-    socket.on('disconnect', () => {
-        console.log('User disconnected');
+    // Disconnect
+    socket.on('disconnect', (data) => {
+        console.log('User disconnected:', socket.id);
+        users = users.filter(user => user.id !== socket.id);
     });
 
     // Listening for event from client and receiving data, i.e., username
@@ -53,5 +56,7 @@ io.on('connection', socket => {
     socket.on('send-message', data => {
         console.log(data)
         io.emit('send-message-to-all-clients', data);
+        messages.push(data);
+        console.log('Messages:', messages)
     });
 })
